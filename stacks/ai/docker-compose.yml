@@ -52,6 +52,12 @@ services:
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:-changeme-secret-32chars}
       - DEFAULT_LOCALE=${DEFAULT_LOCALE:-zh-CN}
       - TZ=${TZ}
+      # Authentik OIDC integration
+      - WEBUI_AUTH=${WEBUI_AUTH:-true}
+      - OIDC_CLIENT_ID=${OPEN_WEBUI_OIDC_CLIENT_ID:-}
+      - OIDC_CLIENT_SECRET=${OPEN_WEBUI_OIDC_CLIENT_SECRET:-}
+      - OIDC_ISSUER=${AUTHENTIK_DOMAIN:-auth.${DOMAIN}}
+      - OIDC_PROVIDER_NAME=Authentik
     depends_on:
       ollama:
         condition: service_healthy
